@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../dist/output.css" rel="stylesheet" />
+    <title>To-Do-List</title>
+  </head>
+  <body>
+    <div class="grid min-h-screen grid-rows-[1fr_11fr]">
+      <nav class="bg-red-600">
+        <h2 class="p-4 text-xl text-white">To Do List</h2>
+      </nav>
+      <div class="grid grid-cols-[1fr_4fr]">
+        <div class="ms-3 flex flex-col bg-neutral-100">
+          <p class="p-4 text-xl">Inbox</p>
+          <h2 class="p-4 text-3xl">Projects</h2>
+          <div>
+            <button class="px-4 text-xl" id="addProject">+ Add Project</button>
+            <form action="" class="hidden flex-col items-center">
+              <input
+                type="text"
+                class="m-2 rounded-sm border-2 border-solid p-1"
+              />
+              <div class="m-2 flex w-full flex-row justify-center gap-12">
+                <button
+                  id="submitAddProject"
+                  class="rounded-md bg-green-400 p-2 px-4"
+                >
+                  Add
+                </button>
+                <button
+                  id="cancelAddProject"
+                  class="rounded-md bg-red-500 p-2 px-4"
+                >
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+  </body>
+</html>

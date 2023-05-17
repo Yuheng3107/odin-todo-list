@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "npx webpack serve",
+    "build": "npx webpack --config webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build-css": "tailwindcss build src/styles.css -o public/styles.css"
+    "build-css": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
   },
   "repository": {
     "type": "git",
@@ -20,7 +22,10 @@
   "devDependencies": {
     "prettier": "^2.8.8",
     "prettier-plugin-tailwindcss": "^0.3.0",
-    "tailwindcss": "^3.3.2"
+    "tailwindcss": "^3.3.2",
+    "webpack": "^5.82.1",
+    "webpack-cli": "^5.1.1",
+    "webpack-dev-server": "^4.15.0"
   },
   "dependencies": {
     "date-fns": "^2.30.0"

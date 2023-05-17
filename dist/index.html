@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./output.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="main.js" type="module" defer></script>
+    <title>To-Do-List</title>
+  </head>
+  <body>
+    <div class="grid min-h-screen grid-rows-[1fr_11fr]">
+      <nav class="bg-red-600">
+        <h2 class="p-4 text-xl text-white">To Do List</h2>
+      </nav>
+      <div class="grid grid-cols-[1fr_4fr]">
+        <div class="flex flex-col bg-neutral-100">
+          <h2 class="p-4 text-xl md:text-3xl">Projects</h2>
+          <div id="projects-container"></div>
+          <div>
+            <button class="mt-2 px-4 text-xs lg:text-xl" id="addProjectBtn">
+              + Add Project
+            </button>
+            <form
+              action=""
+              class="hidden flex-col items-center"
+              id="addProjectForm"
+            >
+              <input
+                type="text"
+                class="m-2 rounded-sm border-2 border-solid p-1"
+                id="projectName"
+                name="projectName"
+                required
+                minlength="1"
+              />
+              <div class="m-2 flex w-full flex-row justify-center gap-12">
+                <button
+                  id="submitAddProject"
+                  class="rounded-md bg-green-400 p-2 px-4"
+                >
+                  Add
+                </button>
+                <button
+                  id="cancelAddProject"
+                  class="rounded-md bg-red-500 p-2 px-4"
+                >
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div id="listArea" class="mx-40 p-10">
+          <h2 class="text-3xl font-bold" id="projectNameDisplay">Inbox</h2>
+          <button class="my-2 py-2 text-xl" id="addTaskBtn">
+            <span class="me-2">+ </span>Add Task
+          </button>
+          <form action="" class="hidden flex-col items-center" id="addTaskForm">
+            <input
+              type="text"
+              class="m-2 w-full rounded-sm border-2 border-solid p-1"
+              minlength="1"
+              required
+              name="todoTitle"
+            />
+            <div class="m-2 flex w-full flex-row gap-12">
+              <button
+                class="w-1/2 rounded-md bg-green-400 p-2 px-4"
+                id="taskSubmitBtn"
+              >
+                Add
+              </button>
+              <button
+                class="w-1/2 rounded-md bg-red-500 p-2 px-4"
+                id="taskCancelBtn"
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
+          <div id="todo-list" class="text-xl"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

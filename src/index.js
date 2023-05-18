@@ -1,4 +1,13 @@
 import { formatDistanceToNow, formatDistance } from "date-fns";
+
+function saveProjects() {
+  window.localStorage["projects"] = JSON.stringify(projects);
+}
+
+function retrieveProjects() {
+  projects = JSON.parse(window.localStorage["projects"]);
+}
+
 function changeToDoDate(todo, date) {
   date = new Date(date);
   todo.dueDate = formatDistance(date, new Date(), {
@@ -20,10 +29,6 @@ function createProject(name) {
   // project has a name, as well as a list of todos
   let todos = [];
   return Object.assign({}, { todos, name });
-}
-
-function saveData() {
-  // save projects and inboxes inside localStorage
 }
 
 function toggleTwoItems(item1, item2) {
@@ -57,6 +62,7 @@ const removeTodo = (project, todo) => {
   project.todos.splice(project.todos.indexOf(todo), 1);
   // render again
   renderToDoList(project);
+  saveProjects();
 };
 const renderToDoList = (project) => {
   // clear nonsense
@@ -66,7 +72,7 @@ const renderToDoList = (project) => {
   project.todos.forEach((todo) => {
     // render
     let item = document.createElement("div");
-    item.classList.add("item", "flex", "flex-row", "justify-between");
+    item.classList.add("item", "flex", "justify-between", "w-full");
 
     let innerHTML = `<div class="flex flex-row items-center">
                 <i class="fa fa-circle-o"></i>
@@ -124,6 +130,7 @@ submitProjectBtn.addEventListener("click", (e) => {
   projects.push(project);
   toggleTwoItems(addProjectBtn, addProjectForm);
   renderProjects(projectsContainer, projects);
+  saveProjects();
 });
 
 cancelProjectBtn.addEventListener("click", (e) => {
@@ -151,6 +158,7 @@ taskSubmitBtn.addEventListener("click", (e) => {
   toggleTwoItems(addTaskBtn, addTaskForm);
   // clear input
   addTaskForm["todoTitle"].value = "";
+  saveProjects();
 });
 
 taskCancelBtn.addEventListener("click", (e) => {
@@ -158,4 +166,6 @@ taskCancelBtn.addEventListener("click", (e) => {
   toggleTwoItems(addTaskBtn, addTaskForm);
 });
 
+retrieveProjects();
 renderProjects(projectsContainer, projects);
+renderToDoList(projects[0]);
